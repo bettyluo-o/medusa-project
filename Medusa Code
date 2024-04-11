@@ -1,17 +1,26 @@
 #include <Servo.h>
 
-Servo mysevo;  //servo variable
-const int buttonPin = 2;
-
+Servo servo1; //medusa turning servo
+Servo servo2; //poseidon servo
+Servo servo3; //athena servo
+Servo servo4; //soldiers servo
+const int buttonPin1 = 2; //light sensor for poseidon? 
+const int buttonPin2 = 1; //something 
+//how to set up led again? 
 void setup() {
-  myservo.attach(9); // Servo goes on pin 9
-  pinMode(buttonPin, INPUT);
+  servo1.attach(9); // Servo goes on pin 9
+  servo2.attach(10);
+  servo3.attach(11);
+  servo4.attach(12);
+  pinMode(buttonPin1, INPUT);
+  pinMode(buttonPin2, INPUT);
 }
 
 void loop(){
+  servo1.
   if(digitalRead(buttonPin) == HIGH){
-    myservo.write(180); //What angle are we turning it? 0-180
+    servo2.write(180); //What angle are we turning it? 0-180
   }else{
-    myservo.write(0);
+    servo3.write(0);
   }
 }
