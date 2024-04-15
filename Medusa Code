@@ -1,16 +1,15 @@
 #include <Servo.h>
 
 Servo servo1; //medusa turning servo
-Servo servo2; //poseidon servo
+Servo servo2; //what to do with this servo? 
 Servo servo3; //athena servo
 Servo servo4; //soldiers servo
-const int ldrPin1 = 2; //light sensor for poseidon? 
-const int buttonPin2 = 1; //something 
+const int buttonPin2 = 2; //soldiers switch
+const int buttonPin1 = 1; //poseidon's switch
 const int ledPin = 3; 
 const int ledPin = 4;
 bool A = FALSE; 
-bool B = FALSE; 
-bool C = FALSE;
+bool B = FALSE;
 
 void setup() {
 serial.begin(9600);
@@ -20,20 +19,19 @@ serial.begin(9600);
   servo4.attach(12); //pin12
     pinMode(ldrPin1, INPUT);
     pinMode(ledPin, OUTPUT);
+    pinMode(buttonPin1, INPUT);
 }
 
 void loop(){
 int ldrstatus = analogRead(ldrPin1)
 sensorVal = analogRead(ldrPin1)
-  if(digitalRead(ldrPin) == LOW){
+buttonState = digitalRead(buttonPin1);
+  if(digitalRead(buttonPin1, HIGH){
     A = TRUE; 
-    servo2.write(180); //What angle are we turning it? 
-
-  }if(A = TRUE) {
     servo3.write(90);
     servo1.write(180); 
     digitalWrite(ledPin, HIGH);
-  }if (B = TRUE) {
+} if (A = TRUE) {
+  if (digitalRead(buttonPin2, HIGH){
     servo4.write(180);
-    C = TRUE
 }
