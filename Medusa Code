@@ -13,25 +13,27 @@ bool B = FALSE;
 bool C = FALSE;
 
 void setup() {
+serial.begin(9600);
   servo1.attach(9); // Servo goes on pin 9
-  servo2.attach(10);
-  servo3.attach(11);
-  servo4.attach(12);
+  servo2.attach(10); //pin10
+  servo3.attach(11); //pin11
+  servo4.attach(12); //pin12
     pinMode(ldrPin1, INPUT);
-    pinMode(buttonPin2, INPUT);
     pinMode(ledPin, OUTPUT);
-    pinMode(ledPin, OUTPUT);
-
 }
 
 void loop(){
+int ldrstatus = analogRead(ldrPin1)
+sensorVal = analogRead(ldrPin1)
   if(digitalRead(ldrPin) == LOW){
     A = TRUE; 
     servo2.write(180); //What angle are we turning it? 
 
   }if(A = TRUE) {
-    servo1.write(180); 
     servo3.write(90);
-    servo4.write(180); 
-  }
+    servo1.write(180); 
+    digitalWrite(ledPin, HIGH);
+  }if (B = TRUE) {
+    servo4.write(180);
+    C = TRUE
 }
