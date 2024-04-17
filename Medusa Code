@@ -3,7 +3,6 @@
 Servo servo1; // medusa turning servo
 Servo servo2; // athena servo
 Servo servo3; // soldiers servo
-Servo servo4; // additional servo
 const int buttonPin1 = 1; // poseidon's switch
 const int buttonPin2 = 2; // soldiers switch
 const int ledPin1 = 3; //led 1
