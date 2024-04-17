@@ -6,8 +6,8 @@ Servo servo3; // soldiers servo
 Servo servo4; // additional servo
 const int buttonPin1 = 1; // poseidon's switch
 const int buttonPin2 = 2; // soldiers switch
-const int ledPin1 = 3; 
-const int ledPin2 = 4;
+const int ledPin1 = 3; //led 1
+const int ledPin2 = 4; //led 2
 bool A = false; 
 
 void setup() {
@@ -27,16 +27,18 @@ void loop() {
   int buttonState1 = digitalRead(buttonPin1);
   int buttonState2 = digitalRead(buttonPin2);
 
-  if(buttonState1 == HIGH){
-    A = true; 
-    servo1.write(180); 
-    servo2.write(90);
+  if(buttonState1 == HIGH){ // if poseidon is placed
+    A = true; //start part A
+    servo2.write(90); //athena slides out
     digitalWrite(ledPin1, HIGH);
     digitalWrite(ledPin2, HIGH);
+    servo1.write(180); //turn medusa around
+    servo2.write(0); //athena retreats
+
   } 
-  if (A == true) {
-    if (buttonState2 == HIGH){
-      servo3.write(180);
+  if (A == true) { //if part A is complete
+    if (buttonState2 == HIGH){ //and soldiers are placed
+      servo3.write(180); //soldiers turn around
     }
   }
 }
