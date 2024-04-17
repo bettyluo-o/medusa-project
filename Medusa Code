@@ -1,37 +1,42 @@
 #include <Servo.h>
 
-Servo servo1; //medusa turning servo
-Servo servo2; //what to do with this servo? 
-Servo servo3; //athena servo
-Servo servo4; //soldiers servo
-const int buttonPin2 = 2; //soldiers switch
-const int buttonPin1 = 1; //poseidon's switch
-const int ledPin = 3; 
-const int ledPin = 4;
-bool A = FALSE; 
-bool B = FALSE;
+Servo servo1; // medusa turning servo
+Servo servo2; // athena servo
+Servo servo3; // soldiers servo
+Servo servo4; // additional servo
+const int buttonPin1 = 1; // poseidon's switch
+const int buttonPin2 = 2; // soldiers switch
+const int ledPin1 = 3; 
+const int ledPin2 = 4;
+bool A = false; 
 
 void setup() {
-serial.begin(9600);
   servo1.attach(9); // Servo goes on pin 9
-  servo2.attach(10); //pin10
-  servo3.attach(11); //pin11
-  servo4.attach(12); //pin12
-    pinMode(ldrPin1, INPUT);
-    pinMode(ledPin, OUTPUT);
-    pinMode(buttonPin1, INPUT);
+  servo2.attach(10); // pin 10
+  servo3.attach(11); // pin 11
+  servo4.attach(12); // pin 12
+  
+  pinMode(ledPin1, OUTPUT);
+  pinMode(ledPin2, OUTPUT);
+  pinMode(buttonPin1, INPUT);
+  pinMode(buttonPin2, INPUT);
 }
 
-void loop(){
-int ldrstatus = analogRead(ldrPin1)
-sensorVal = analogRead(ldrPin1)
-buttonState = digitalRead(buttonPin1);
-  if(digitalRead(buttonPin1, HIGH){
-    A = TRUE; 
-    servo3.write(90);
+void loop() {
+
+  int buttonState1 = digitalRead(buttonPin1);
+  int buttonState2 = digitalRead(buttonPin2);
+
+  if(buttonState1 == HIGH){
+    A = true; 
     servo1.write(180); 
-    digitalWrite(ledPin, HIGH);
-} if (A = TRUE) {
-  if (digitalRead(buttonPin2, HIGH){
-    servo4.write(180);
+    servo2.write(90);
+    digitalWrite(ledPin1, HIGH);
+    digitalWrite(ledPin2, HIGH);
+  } 
+  if (A == true) {
+    if (buttonState2 == HIGH){
+      servo3.write(180);
+    }
+  }
 }
