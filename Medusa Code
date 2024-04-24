@@ -3,20 +3,21 @@
 Servo servo1; // medusa turning servo
 Servo servo2; // athena servo
 Servo servo3; // soldiers servo
-const int buttonPin1 = 1; // poseidon's switch
-const int buttonPin2 = 2; // soldiers switch
+const int buttonPin1 = 3; // poseidon's switch
+const int buttonPin2 = 4; // soldiers switch
 bool A = false; 
-
 void setup() {
+  Serial.begin(9600);
   servo1.attach(9); // Servo goes on pin 9
   servo2.attach(10); // pin 10
   servo3.attach(11); // pin 11
-  servo4.attach(12); // pin 12
+
+  servo1.write (0); //start at 0
+  servo2.write (0);
   
-  pinMode(ledPin1, OUTPUT);
-  pinMode(ledPin2, OUTPUT);
   pinMode(buttonPin1, INPUT);
   pinMode(buttonPin2, INPUT);
+
 }
 
 void loop() {
@@ -24,18 +25,22 @@ void loop() {
   int buttonState1 = digitalRead(buttonPin1);
   int buttonState2 = digitalRead(buttonPin2);
 
-  if(buttonState1 == HIGH){ // if poseidon is placed
-    A = true; //start part A
-    servo2.write(90); //athena slides out
-    digitalWrite(ledPin1, HIGH);
-    digitalWrite(ledPin2, HIGH);
-    servo1.write(180); //turn medusa around
-    servo2.write(0); //athena retreats
+  Serial.println(servo3.read());
 
-  } 
-  if (A == true) { //if part A is complete
-    if (buttonState2 == HIGH){ //and soldiers are placed
-      servo3.write(180); //soldiers turn around
+  if(buttonState1 == HIGH){ // if poseidon is placed
+    //A = true; //start part A
+    servo2.write(30); //athena slides out
+   // digitalWrite(ledPin1, HIGH);
+    //digitalWrite(ledPin2, HIGH);
+    servo1.write(0); //turn medusa around
+  } else{
+    servo2.write(5);
+    servo1.write(180);
+  //}
+  if (buttonState2 == HIGH) { //if part A is complete and soldiers are placed
+      servo3.write(180); //soldiers turn around 
+  }else{
+      servo3.write(0);
+   }
     }
-  }
 }
